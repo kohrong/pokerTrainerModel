@@ -16,5 +16,8 @@ public class PokerPlayer {
         this.position = position;
     }
    
+    public String getName(){
+    	return this.name;
+    }
    
 }
