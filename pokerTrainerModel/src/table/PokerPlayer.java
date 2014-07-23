@@ -4,15 +4,24 @@ import pokertrainer.PokerHand;
 import pokertrainer.TexasHand;
 
 public class PokerPlayer {
-   private String name;
-   private Stack stack;
-   private TablePosition position;
-   private TexasHand texasHand;
-   private PokerHand pokerHand;
-   
-    public String getName(){
-    	return this.name;
-    }
+	private String name;
+	private Stack stack;
+	private TablePosition position;
+	private TexasHand holeCards;
+	private PokerHand pokerHand;
+
+	public PokerPlayer(String name, Stack stack, TablePosition position,
+			TexasHand holeCards) {
+		super();
+		this.name = name;
+		this.stack = stack;
+		this.position = position;
+		this.holeCards = holeCards;
+	}
+
+	public String getName() {
+		return this.name;
+	}
 
 	public Stack getStack() {
 		return stack;
@@ -43,10 +52,10 @@ public class PokerPlayer {
 	}
 
 	public TexasHand getTexasHand() {
-		return texasHand;
+		return holeCards;
 	}
 
 	public void setTexasHand(TexasHand texasHand) {
-		this.texasHand = texasHand;
-	}   
+		this.holeCards = texasHand;
+	}
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import pokertrainer.Deck;
 
 public class PokerTable {
-    private ArrayList<PokerPlayer> playerList;
-    private int pot;
+    private ArrayList<PokerPlayer> pokerPlayerList;
+    private Pot pot;
     private int street; //ENUM
     private Board board;
     private Deck deck;
@@ -13,16 +13,10 @@ public class PokerTable {
     private int BB;
     
 	public ArrayList<PokerPlayer> getPlayerList() {
-		return playerList;
+		return pokerPlayerList;
 	}
 	public void setPlayerList(ArrayList<PokerPlayer> playerList) {
-		this.playerList = playerList;
-	}
-	public int getPot() {
-		return pot;
-	}
-	public void setPot(int pot) {
-		this.pot = pot;
+		this.pokerPlayerList = playerList;
 	}
 	public int getStreet() {
 		return street;
@@ -54,6 +48,10 @@ public class PokerTable {
 	public void setBB(int bB) {
 		BB = bB;
 	}
-
-    
+	public Pot getPot() {
+		return pot;
+	}
+	public void setPot(Pot pot) {
+		this.pot = pot;
+	}
 }
