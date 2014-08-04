@@ -58,4 +58,12 @@ public class TexasHand implements Hand{
             if (comparator.compare(cards[i], card) < 0) card = cards[i];
         return card;
     }
+    
+    public Card getCard0(){
+    	return cards[0];
+    }
+    
+    public Card getCard1(){
+    	return cards[1];
+    }
 }
