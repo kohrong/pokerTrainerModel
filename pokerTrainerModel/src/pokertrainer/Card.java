@@ -89,6 +89,9 @@ public class Card implements Comparable<Card>{
             
         }
     }
-    
+
+	public boolean isSameSuit(CardSuit suit) {
+		return this.suit == suit;
+	}   
     
 }

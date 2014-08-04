@@ -9,6 +9,7 @@ public class PokerPlayer {
 	private TablePosition position;
 	private TexasHand holeCards;
 	private PokerHand pokerHand;
+	private PlayerStatus status;
 
 	public PokerPlayer(String name, Stack stack, TablePosition position,
 			TexasHand holeCards) {
