@@ -6,7 +6,7 @@ public class Board {
    private Card[] flop = new Card[3];
    private Card turn;
    private Card river;
-   private int street = 0;
+   private int street;
 
     public Board(Card[] flop, Card turn, Card river) {
         this.flop = flop;
@@ -29,7 +29,14 @@ public class Board {
         street = 1;
     }
 
-    public Card[] getFlop() {
+    public Board() {
+		this.flop = null;
+		this.turn = null;
+		this.river = null;
+		street = 0;
+	}
+
+	public Card[] getFlop() {
         return flop;
     }
 

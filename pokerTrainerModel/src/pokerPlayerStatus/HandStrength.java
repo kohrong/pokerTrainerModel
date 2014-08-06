@@ -1,4 +1,4 @@
-package table;
+package pokerPlayerStatus;
 
 public class HandStrength {
 
