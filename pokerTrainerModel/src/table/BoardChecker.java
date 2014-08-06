@@ -11,6 +11,8 @@ public class BoardChecker {
 	private ArrayList<PokerHand> pokerHandList = new ArrayList<PokerHand>();
 
 	public PokerHand calculatePokerHand(TexasHand texasHand, Board board) {
+		if(board.isPreFlop())	return null;
+		
 		ArrayList<Card> sequence = new ArrayList<Card>();
 		sequence.add(texasHand.getCard0());
 		sequence.add(texasHand.getCard1());
@@ -18,13 +20,13 @@ public class BoardChecker {
 		sequence.add(board.getFlop()[1]);
 		sequence.add(board.getFlop()[2]);
 
-		if(board.getStreet() == 1)
+		if(board.isFlop())
 			return boardOnFlop(sequence);
-		if (board.getStreet() == 2){
+		if (board.isTurn()){
 			sequence.add(board.getTurn());
 			boardOnTurn(sequence);
 		}
-		if (board.getStreet() == 3) {
+		if (board.isRiver()) {
 			sequence.add(board.getTurn());
 			sequence.add(board.getRiver());
 			boardOnRiver(sequence);

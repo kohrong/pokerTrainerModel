@@ -1,5 +1,6 @@
 package table;
 
+import pokerPlayerStatus.PlayerStatus;
 import pokertrainer.PokerHand;
 import pokertrainer.TexasHand;
 
@@ -10,14 +11,24 @@ public class PokerPlayer {
 	private TexasHand holeCards;
 	private PokerHand pokerHand;
 	private PlayerStatus status;
+	private TableView tableView;
+	private int bet;
 
 	public PokerPlayer(String name, Stack stack, TablePosition position,
-			TexasHand holeCards) {
+			TexasHand holeCards, TableView tableView) {
 		super();
 		this.name = name;
 		this.stack = stack;
 		this.position = position;
 		this.holeCards = holeCards;
+		this.tableView = tableView;
+		this.bet = 0;
+		calculatePokerHand();
+	}
+
+	private void calculatePokerHand() {
+		BoardChecker boardChecker = new BoardChecker();
+		pokerHand = boardChecker.calculatePokerHand(holeCards, tableView.getBoard());	
 	}
 
 	public String getName() {
@@ -59,4 +70,21 @@ public class PokerPlayer {
 	public void setTexasHand(TexasHand texasHand) {
 		this.holeCards = texasHand;
 	}
+
+	public PlayerStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(PlayerStatus status) {
+		this.status = status;
+	}
+
+	public int getBet() {
+		return bet;
+	}
+
+	public void setBet(int bet) {
+		this.bet = bet;
+	}
+	
 }

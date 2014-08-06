@@ -1,4 +1,4 @@
-package calculatePokerHand;
+package table;
 
 import static org.junit.Assert.*;
 
@@ -16,12 +16,12 @@ import table.PokerPlayer;
 import table.Stack;
 import table.TablePosition;
 
-public class calculatePokerHandTest {
+public class CalculatePokerHandTest {
 
 	@Test
 	public void testOnFlop() throws Exception {
 		PokerPlayer pokerPlayer = new PokerPlayer("Josue", new Stack(1000), TablePosition.BB, 
-				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)));
+				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)), null);
 		
 		Board board = new Board(new Card[]{new Card(4, CardSuit.SPADE), new Card(5, CardSuit.DIAMOND), 
 				new Card(6, CardSuit.CLUB)});
@@ -38,7 +38,7 @@ public class calculatePokerHandTest {
 	@Test
 	public void testOnTurn() throws Exception{
 		PokerPlayer pokerPlayer = new PokerPlayer("Josue", new Stack(1000), TablePosition.BB, 
-				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)));
+				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)), null);
 		
 		Board board = new Board(new Card[]{new Card(4, CardSuit.SPADE), new Card(5, CardSuit.DIAMOND), 
 				new Card(6, CardSuit.CLUB)}, new Card(9, CardSuit.HEART));
@@ -57,7 +57,7 @@ public class calculatePokerHandTest {
 	@Test
 	public void testOnRiver() throws Exception{
 		PokerPlayer pokerPlayer = new PokerPlayer("Josue", new Stack(1000), TablePosition.BB, 
-				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)));
+				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)), null);
 		
 		Board board = new Board(new Card[]{new Card(4, CardSuit.SPADE), new Card(5, CardSuit.DIAMOND), 
 				new Card(6, CardSuit.CLUB)}, new Card(9, CardSuit.HEART), new Card(10, CardSuit.CLUB));

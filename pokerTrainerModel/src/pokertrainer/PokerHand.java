@@ -79,4 +79,12 @@ public final class PokerHand implements Hand, Comparable<PokerHand>{
                 return 1;
         return 0;
     }
+
+	public boolean isFlush() {
+		return handCategory == HandCategory.Flush;
+	}
+
+	public boolean isStraight() {
+		return handCategory == HandCategory.Straight;
+	}
 }

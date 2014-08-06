@@ -6,7 +6,7 @@ import pokertrainer.Deck;
 public class PokerTable {
     private ArrayList<PokerPlayer> pokerPlayerList;
     private Pot pot;
-    private int street; //ENUM
+    private int street = 0; //ENUM
     private Board board;
     private Deck deck;
     private int SB;
