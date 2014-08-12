@@ -82,4 +82,17 @@ public class Board {
 		this.river = river;
 		this.street = Street.RIVER;
 	}
+
+	public int size() {
+		if(isPreFlop())	return 0;
+		if(isFlop())	return 3;
+		if(isTurn())	return 4;
+		return 5;
+	}
+
+	public Card get(int i) {
+		if(i < 3)	return getFlop()[i];
+		if(i == 4)	return getTurn();
+		return getRiver();
+	}
 }

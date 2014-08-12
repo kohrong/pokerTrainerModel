@@ -3,24 +3,24 @@ package pokerPlayerStatus;
 import pokertrainer.CardSuit;
 import pokertrainer.TexasHand;
 import table.Board;
-import table.BoardChecker;
+import table.PokerHandCalculator;
 
 public class FlushProject {
 	private Board board;
 	private TexasHand texasHand;
-	private BoardChecker boardChecker;
+	private PokerHandCalculator pokerHandCalculator;
 	
 	public FlushProject(Board board, TexasHand texasHand) {
 		super();
 		this.board = board;
 		this.texasHand = texasHand;
-		boardChecker = new BoardChecker();
+		pokerHandCalculator = new PokerHandCalculator();
 	}
 	
 	public boolean isFlushProject(){
 		if(board.isRiver() || board.isPreFlop())
 			return false;
-		else if(boardChecker.calculatePokerHand(texasHand, board).isFlush())
+		else if(pokerHandCalculator.calculatePokerHand(texasHand, board).isFlush())
 			return false;
 		else if(texasHand.isSuited())
 			return calculateFlushProject(texasHand.getCard0().getSuit(), 2);

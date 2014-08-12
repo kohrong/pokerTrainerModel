@@ -11,7 +11,7 @@ import pokertrainer.CardSuit;
 import pokertrainer.PokerHand;
 import pokertrainer.TexasHand;
 import table.Board;
-import table.BoardChecker;
+import table.PokerHandCalculator;
 import table.PokerPlayer;
 import table.Stack;
 import table.TablePosition;
@@ -27,7 +27,7 @@ public class CalculatePokerHandTest {
 		PokerPlayer pokerPlayer = new PokerPlayer("Josue", new Stack(1000), TablePosition.BB, 
 				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)), new TableView("Josue", pokerTable));
 		
-		BoardChecker boardChecker = new BoardChecker();
+		PokerHandCalculator boardChecker = new PokerHandCalculator();
 		PokerHand pokerHand = boardChecker.calculatePokerHand(pokerPlayer.getTexasHand(), board);
 		
 		assertTrue(pokerHand == null);
@@ -43,7 +43,7 @@ public class CalculatePokerHandTest {
 				new TexasHand(new Card(7, CardSuit.CLUB), new Card(8, CardSuit.DIAMOND)),
 				new TableView("Josue", pokerTable));
 		
-		BoardChecker boardChecker = new BoardChecker();
+		PokerHandCalculator boardChecker = new PokerHandCalculator();
 		PokerHand pokerHand = boardChecker.calculatePokerHand(pokerPlayer.getTexasHand(), board);
 		
 		pokerPlayer.setPokerHand(pokerHand);
@@ -64,7 +64,7 @@ public class CalculatePokerHandTest {
 		
 		
 		
-		BoardChecker boardChecker = new BoardChecker();
+		PokerHandCalculator boardChecker = new PokerHandCalculator();
 		PokerHand pokerHand = boardChecker.calculatePokerHand(pokerPlayer.getTexasHand(), board);
 		
 		pokerPlayer.setPokerHand(pokerHand);
@@ -87,7 +87,7 @@ public class CalculatePokerHandTest {
 		
 		
 		
-		BoardChecker boardChecker = new BoardChecker();
+		PokerHandCalculator boardChecker = new PokerHandCalculator();
 		PokerHand pokerHand = boardChecker.calculatePokerHand(pokerPlayer.getTexasHand(), board);
 		
 		pokerPlayer.setPokerHand(pokerHand);

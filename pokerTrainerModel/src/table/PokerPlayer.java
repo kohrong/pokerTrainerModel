@@ -27,7 +27,7 @@ public class PokerPlayer {
 	}
 
 	private void calculatePokerHand() {
-		BoardChecker boardChecker = new BoardChecker();
+		PokerHandCalculator boardChecker = new PokerHandCalculator();
 		pokerHand = boardChecker.calculatePokerHand(holeCards, tableView.getBoard());	
 	}
 
