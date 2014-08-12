@@ -3,37 +3,37 @@ package table;
 import pokertrainer.Card;
 
 public class Board {
-   private Card[] flop = new Card[3];
+   private Card[] flop;
    private Card turn;
    private Card river;
-   private int street;
+   private Street street;
 
     public Board(Card[] flop, Card turn, Card river) {
         this.flop = flop;
         this.turn = turn;
         this.river = river;
-        street = 3;
+        street = Street.RIVER;
     }
 
     public Board(Card[] flop, Card turn) {
         this.flop = flop;
         this.turn = turn;
         this.river = null;
-        street = 2;
+        street = Street.TURN;
     }
 
     public Board(Card[] flop) {
         this.flop = flop;
         this.turn = null;
         this.river = null;
-        street = 1;
+        street = Street.FLOP;
     }
 
     public Board() {
-		this.flop = null;
+		this.flop = new Card[3];
 		this.turn = null;
 		this.river = null;
-		street = 0;
+		street = Street.PREFLOP;
 	}
 
 	public Card[] getFlop() {
@@ -48,23 +48,38 @@ public class Board {
         return river;
     }
     
-    public int getStreet(){
+    public Street getStreet(){
     	return street;
     }
 
 	public boolean isRiver() {
-		return street == 3;
+		return street == Street.RIVER;
 	}
 
 	public boolean isPreFlop() {
-		return street == 0;
+		return street == Street.PREFLOP;
 	}
 	
 	public boolean isTurn(){
-		return street == 2;
+		return street == Street.TURN;
 	}
 	
 	public boolean isFlop(){
-		return street == 1;
+		return street == Street.FLOP;
+	}
+
+	public void setFlop(Card[] cards) {
+		for(int i = 0; i < 3; i++)	this.flop[i] = cards[i];
+		this.street = Street.FLOP;
+	}
+
+	public void setTurn(Card turn) {
+		this.turn = turn;
+		this.street = Street.TURN;
+	}
+	
+	public void setRiver(Card river){
+		this.river = river;
+		this.street = Street.RIVER;
 	}
 }
