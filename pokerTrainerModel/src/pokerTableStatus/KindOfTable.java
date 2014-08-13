@@ -8,7 +8,7 @@ public class KindOfTable {
 	
 	private final String id;
 	
-	public KindOfTable(String id){
+	private KindOfTable(String id){
 		this.id = id;
 	}
 	

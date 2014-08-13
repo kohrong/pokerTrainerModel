@@ -34,16 +34,8 @@ public class StraightProject {
 		
 		sequence.add(texasHand.getCard0());
 		sequence.add(texasHand.getCard1());
-		sequence.add(board.getFlop()[0]);
-		sequence.add(board.getFlop()[1]);
-		sequence.add(board.getFlop()[2]);
+		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
 
-		if(board.isFlop())
-			return new BoardChecker().straightProjectWithFiveCards(sequence);
-		if (board.isTurn()){
-			sequence.add(board.getTurn());
-			return new BoardChecker().straightProjectWithSixCards(sequence);
-		}
-		return false;
+		return new BoardChecker().isStraightProject(sequence, 4);
 	}
 }

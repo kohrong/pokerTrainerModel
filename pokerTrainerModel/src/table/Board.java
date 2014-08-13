@@ -92,7 +92,7 @@ public class Board {
 
 	public Card get(int i) {
 		if(i < 3)	return getFlop()[i];
-		if(i == 4)	return getTurn();
+		if(i == 3)	return getTurn();
 		return getRiver();
 	}
 }

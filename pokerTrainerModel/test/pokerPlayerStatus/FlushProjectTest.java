@@ -18,9 +18,7 @@ public class FlushProjectTest {
 				new Card(9, CardSuit.CLUB)});
 		TexasHand texasHand = new TexasHand(new Card(3, CardSuit.CLUB), new Card(4, CardSuit.CLUB));
 		
-		FlushProject flushProject = new FlushProject(board, texasHand);
-		
-		assertFalse(flushProject.isFlushProject());
+		assertFalse(new FlushProject(board, texasHand).isFlushProject());
 	}
 	
 	@Test
@@ -29,20 +27,16 @@ public class FlushProjectTest {
 				new Card(9, CardSuit.CLUB)});
 		TexasHand texasHand = new TexasHand(new Card(3, CardSuit.DIAMOND), new Card(4, CardSuit.CLUB));
 		
-		FlushProject flushProject = new FlushProject(board, texasHand);
-		
-		assertTrue(flushProject.isFlushProject());
+		assertTrue(new FlushProject(board, texasHand).isFlushProject());
 	}
 	
 	@Test
-	public void testIfFlushProjectSuited() throws Exception{
+	public void testIsFlushProjectSuited() throws Exception{
 		Board board = new Board(new Card[]{new Card(7, CardSuit.CLUB), new Card(8, CardSuit.CLUB),
 				new Card(9, CardSuit.DIAMOND)});
 		TexasHand texasHand = new TexasHand(new Card(3, CardSuit.CLUB), new Card(4, CardSuit.CLUB));
 		
-		FlushProject flushProject = new FlushProject(board, texasHand);
-		
-		assertTrue(flushProject.isFlushProject());
+		assertTrue(new FlushProject(board, texasHand).isFlushProject());
 	}
 
 }

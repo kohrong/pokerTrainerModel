@@ -1,8 +1,11 @@
 package pokerPlayerStatus;
 
-import pokertrainer.CardSuit;
+import java.util.ArrayList;
+
+import pokertrainer.Card;
 import pokertrainer.TexasHand;
 import table.Board;
+import table.BoardChecker;
 import table.PokerHandCalculator;
 
 public class FlushProject {
@@ -22,24 +25,14 @@ public class FlushProject {
 			return false;
 		else if(pokerHandCalculator.calculatePokerHand(texasHand, board).isFlush())
 			return false;
-		else if(texasHand.isSuited())
-			return calculateFlushProject(texasHand.getCard0().getSuit(), 2);
-		else
-			return calculateFlushProject(texasHand.getCard0().getSuit(), 3)
-					|| calculateFlushProject(texasHand.getCard1().getSuit(), 3);
+		return calculateFlushProject();
 	}
 	
-	private boolean calculateFlushProject(CardSuit suit, int cardsSuited) {
-		int sameSuit = 0;
-		
-		for (int i = 0; i < 3; i++) {
-			if(board.getFlop()[i].isSameSuit(suit))
-				sameSuit++;
-		}
-		if(board.isTurn()){
-			if(board.getTurn().isSameSuit(suit))
-				sameSuit++;
-		}
-		return sameSuit == cardsSuited;
+	private boolean calculateFlushProject() {
+		ArrayList<Card> sequence = new ArrayList<>();
+		sequence.add(texasHand.getCard0());
+		sequence.add(texasHand.getCard1());
+		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
+		return new BoardChecker().sameSuit(sequence, 4);	
 	}
 }

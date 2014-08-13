@@ -3,58 +3,51 @@ package pokerTableStatus;
 import java.util.ArrayList;
 
 import pokertrainer.Card;
-import pokertrainer.CardSuit;
 import table.Board;
 import table.BoardChecker;
 
 public class KindOfTableChecker {
 	
-	public KindOfTable checkKindOfTable(Board board){
+	public KindOfTable getKindOfTable(Board board){
 		if(isExtremelyCoordinated(board))	return KindOfTable.ExtremelyCoordinated;
 		if(isCoordinated(board))	return KindOfTable.Coordinated;
-		if(isHalfCoordinated(board))	return KindOfTable.HalfCoordinated;
 		return KindOfTable.Dry;
 	}
-
-	private boolean isHalfCoordinated(Board board) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public boolean isDry(Board board){
+		if(isExtremelyCoordinated(board) || isCoordinated(board))	return false;
+		return true;
 	}
 
-	private boolean isCoordinated(Board board) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isHalfCoordinated(Board board) {
+		if(isExtremelyCoordinated(board) || isCoordinated(board))	return false;
+		if(board.isPreFlop())	return false;
+		
+		ArrayList<Card> sequence = new ArrayList<>();
+		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
+		
+		if(new BoardChecker().sameSuit(sequence, 2))	return new BoardChecker().closestCardsGap(sequence, 4);
+		else	return new BoardChecker().closestCardsGap(sequence, 3);
+	}
+
+	public boolean isCoordinated(Board board) {
+		if(board.isPreFlop() || isExtremelyCoordinated(board)) return false;
+		
+		ArrayList<Card> sequence = new ArrayList<>();
+		for(int i = 0; i < board.size(); i++) sequence.add(board.get(i));
+		
+		if(new BoardChecker().sameSuit(sequence, 3))	return true;
+		return new BoardChecker().isStraightProject(sequence, 3);
 	}
 
 	public boolean isExtremelyCoordinated(Board board) {
 		if(board.isPreFlop() || board.isFlop())	return false;
 		
-		if(fourOfTheSameSuit(board))	return true;
-		
 		ArrayList<Card> sequence = new ArrayList<>();
-		sequence.add(board.getFlop()[0]);
-		sequence.add(board.getFlop()[1]);
-		sequence.add(board.getFlop()[2]);
-		sequence.add(board.getTurn());
+		for(int i = 0; i < board.size(); i++) sequence.add(board.get(i));
 
-		if(board.isTurn())	return new BoardChecker().straightProjectWithFourCards(sequence);
-		if(board.isRiver()){
-			sequence.add(board.getRiver());
-			return new BoardChecker().straightProjectWithFiveCards(sequence);
-		}
-		return false;
+		if(new BoardChecker().sameSuit(sequence, 4))	return true;
+		return new BoardChecker().isStraightProject(sequence, 4);
 	}
 
-	private boolean fourOfTheSameSuit(Board board) {
-		int sameSuit = 0;
-		
-		for(int i = 0; i < CardSuit.SUITS.length; i++){
-			for(int j = 0; j < board.size(); j++){
-				if(board.get(j).isSameSuit(CardSuit.SUITS[i]))	sameSuit++;
-			}
-			if(sameSuit == 4)	return true;
-			sameSuit = 0;
-		}
-		return false;
-	}
 }
