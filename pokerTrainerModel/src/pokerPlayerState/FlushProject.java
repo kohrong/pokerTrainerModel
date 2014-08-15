@@ -2,10 +2,10 @@ package pokerPlayerState;
 
 import java.util.ArrayList;
 
+import cardListAttributesChecker.SameSuitChecker;
 import pokertrainer.Card;
 import pokertrainer.TexasHand;
 import table.Board;
-import table.BoardChecker;
 import table.PokerHandCalculator;
 
 public class FlushProject {
@@ -29,10 +29,14 @@ public class FlushProject {
 	}
 	
 	private boolean calculateFlushProject() {
+		return new SameSuitChecker().check(createSequence(), 4);	
+	}
+	
+	private ArrayList<Card> createSequence() {
 		ArrayList<Card> sequence = new ArrayList<>();
 		sequence.add(texasHand.getCard0());
 		sequence.add(texasHand.getCard1());
 		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
-		return new BoardChecker().sameSuit(sequence, 4);	
+		return sequence;
 	}
 }

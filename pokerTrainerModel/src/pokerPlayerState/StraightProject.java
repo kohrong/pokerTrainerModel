@@ -2,10 +2,10 @@ package pokerPlayerState;
 
 import java.util.ArrayList;
 
+import cardListAttributesChecker.CardsConnectedChecker;
 import pokertrainer.Card;
 import pokertrainer.TexasHand;
 import table.Board;
-import table.BoardChecker;
 import table.PokerHandCalculator;
 
 public class StraightProject {
@@ -26,16 +26,14 @@ public class StraightProject {
 		else if(pokerHandCalculator.calculatePokerHand(texasHand, board).isStraight())
 			return false;
 		else
-			return calculateStraightProject();
+			return new CardsConnectedChecker().check(createSequence(), 4);
 	}
 	
-	private boolean calculateStraightProject() {
+	private ArrayList<Card> createSequence() {
 		ArrayList<Card> sequence = new ArrayList<>();
-		
 		sequence.add(texasHand.getCard0());
 		sequence.add(texasHand.getCard1());
 		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
-
-		return new BoardChecker().isStraightProject(sequence, 4);
+		return sequence;
 	}
 }

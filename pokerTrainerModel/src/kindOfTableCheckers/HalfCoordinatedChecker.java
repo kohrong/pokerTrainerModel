@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import pokertrainer.Card;
 import table.Board;
-import table.BoardChecker;
+import cardListAttributesChecker.MaximumGapChecker;
+import cardListAttributesChecker.SameSuitChecker;
 
 public class HalfCoordinatedChecker implements KindOfTableChecker{
 
@@ -21,7 +22,8 @@ public class HalfCoordinatedChecker implements KindOfTableChecker{
 		ArrayList<Card> sequence = new ArrayList<>();
 		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
 		
-		if(new BoardChecker().sameSuit(sequence, 2))	return new BoardChecker().closestCardsGap(sequence, 4);
-		else	return new BoardChecker().closestCardsGap(sequence, 3);
+		if(new SameSuitChecker().sameSuit(sequence, 2))
+			return new MaximumGapChecker().check(sequence, 4);
+		else	return new MaximumGapChecker().check(sequence, 3);
 	}
 }
