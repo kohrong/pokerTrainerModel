@@ -1,13 +1,13 @@
-package pokerPlayerStatus;
+package pokerPlayerState;
 
 import table.Board;
 import table.PokerPlayer;
 
-public class PlayerStatus {
+public class PlayerState {
 	private PokerPlayer pokerPlayer;
 	private Board board;
 	
-	public PlayerStatus(PokerPlayer pokerPlayer, Board board){
+	public PlayerState(PokerPlayer pokerPlayer, Board board){
 		this.pokerPlayer = pokerPlayer;
 		this.board = board;
 	}

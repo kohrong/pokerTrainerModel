@@ -1,4 +1,4 @@
-package pokerPlayerStatus;
+package pokerPlayerState;
 
 public class HandStrengthChecker {
 

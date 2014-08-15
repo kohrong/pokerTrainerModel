@@ -1,4 +1,4 @@
-package pokerPlayerStatus;
+package pokerPlayerState;
 
 public class HandStrength {
 	public static final HandStrength VeryStrong = new HandStrength("VeryStrong");

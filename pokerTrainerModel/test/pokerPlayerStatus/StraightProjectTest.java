@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pokerPlayerState.StraightProject;
 import pokertrainer.Card;
 import pokertrainer.Card.Exception;
 import pokertrainer.CardSuit;

@@ -1,6 +1,6 @@
 package table;
 
-import pokerPlayerStatus.PlayerStatus;
+import pokerPlayerState.PlayerState;
 import pokertrainer.PokerHand;
 import pokertrainer.TexasHand;
 
@@ -10,7 +10,7 @@ public class PokerPlayer {
 	private TablePosition position;
 	private TexasHand holeCards;
 	private PokerHand pokerHand;
-	private PlayerStatus status;
+	private PlayerState status;
 	private TableView tableView;
 	private int bet;
 
@@ -71,11 +71,11 @@ public class PokerPlayer {
 		this.holeCards = texasHand;
 	}
 
-	public PlayerStatus getStatus() {
+	public PlayerState getStatus() {
 		return status;
 	}
 
-	public void setStatus(PlayerStatus status) {
+	public void setStatus(PlayerState status) {
 		this.status = status;
 	}
 

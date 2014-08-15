@@ -1,4 +1,4 @@
-package pokerPlayerStatus;
+package pokerPlayerState;
 
 import table.Pot;
 import table.Stack;

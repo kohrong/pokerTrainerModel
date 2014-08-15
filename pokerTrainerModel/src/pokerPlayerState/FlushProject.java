@@ -1,4 +1,4 @@
-package pokerPlayerStatus;
+package pokerPlayerState;
 
 import java.util.ArrayList;
 
@@ -8,34 +8,31 @@ import table.Board;
 import table.BoardChecker;
 import table.PokerHandCalculator;
 
-public class StraightProject {
+public class FlushProject {
 	private Board board;
 	private TexasHand texasHand;
 	private PokerHandCalculator pokerHandCalculator;
 	
-	public StraightProject(Board board, TexasHand texasHand) {
+	public FlushProject(Board board, TexasHand texasHand) {
 		super();
 		this.board = board;
 		this.texasHand = texasHand;
 		pokerHandCalculator = new PokerHandCalculator();
 	}
 	
-	public boolean isStraightProject(){
+	public boolean isFlushProject(){
 		if(board.isRiver() || board.isPreFlop())
 			return false;
-		else if(pokerHandCalculator.calculatePokerHand(texasHand, board).isStraight())
+		else if(pokerHandCalculator.calculatePokerHand(texasHand, board).isFlush())
 			return false;
-		else
-			return calculateStraightProject();
+		return calculateFlushProject();
 	}
 	
-	private boolean calculateStraightProject() {
+	private boolean calculateFlushProject() {
 		ArrayList<Card> sequence = new ArrayList<>();
-		
 		sequence.add(texasHand.getCard0());
 		sequence.add(texasHand.getCard1());
 		for(int i = 0; i < board.size(); i++)	sequence.add(board.get(i));
-
-		return new BoardChecker().isStraightProject(sequence, 4);
+		return new BoardChecker().sameSuit(sequence, 4);	
 	}
 }
